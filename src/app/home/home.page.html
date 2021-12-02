@@ -1,20 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+   <ion-tab-bar slot="bottom" color="danger">
+    <ion-tab-button tab="account">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+  <ion-tab-button tab="main">
+    <ion-icon name="locate-outline"></ion-icon>
+    <ion-label>Main</ion-label>
+  </ion-tab-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <ion-tab-button tab="statistics">
+    <ion-icon name="bar-chart-outline"></ion-icon>
+    <ion-label>statistics</ion-label>
+  </ion-tab-button>
+
+
+  <ion-tab-button tab="alerts">
+    <ion-icon name="alert-outline"></ion-icon>
+    <ion-label>Alerts</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+
+ 
+</ion-tabs>
+
