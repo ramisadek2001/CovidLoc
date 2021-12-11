@@ -13,16 +13,16 @@
 
   </div>
   
-<form action="action_page.php" method="post">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" >
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="uname"><b>Email</b></label>
+    <input ngModel type="text" placeholder="Enter Username" name="email"  #email required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input ngModel type="password" placeholder="Enter Password" name="psw"  #psw required>
 
-    <button (click)="login()">Login</button>
-    <button (click)="signup()">Sign-up</button>
+    <button type="submit" >Login</button>
+    <button type="button" (click)="signup()">Sign-up</button>
     
   </div>
 

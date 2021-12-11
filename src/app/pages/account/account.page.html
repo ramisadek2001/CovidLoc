@@ -8,7 +8,6 @@
 <ion-content>
   
 
-  <img src="../assets/img_avatar.png" alt="Avatar" class="avatar">
  
   <!-- <embed src="../assets/vac.pdf" width="500px" height="800px" type="pdf"> -->
   <!-- <div class="qr">
@@ -18,7 +17,7 @@
  
  <ngx-qrcode 
   [elementType]="elementType" 
-  [value]="qrData" class="qr">
+  [value]="qrData" >
 </ngx-qrcode>
 <ion-item style="margin-top: 30px;">
    <ion-input type="text" placeholder="My QR code"[(ngModel)]="qrData" color="dark" ></ion-input>

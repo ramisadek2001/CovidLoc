@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { ToastController } from '@ionic/angular';
+import { QrcodeService, Qr } from "../../qrcode.service";
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -17,10 +18,10 @@ export class AccountPage implements OnInit {
   qrData = "https://covax.moph.gov.lb/impactmobile/vaccine/certificate?code=7NGGPMU4NY";
   scannedCode = null;
   elementType: 'url' | 'canvas' |'img' = 'url';
-  constructor(private document: DocumentViewer,private file:File, private trasfer: FileTransfer,private router:Router,private barcodeScanner: BarcodeScanner, private base64ToGallery: Base64ToGallery, privatetoastCtrl: ToastController ) { 
+  constructor(private document: DocumentViewer,private file:File, private trasfer: FileTransfer,private router:Router,private barcodeScanner: BarcodeScanner, private base64ToGallery: Base64ToGallery, privatetoastCtrl: ToastController,private service: QrcodeService ) { 
    
   }
-
+qr: Qr[];
   scanCode(){
 
     this.barcodeScanner.scan().then(
@@ -45,6 +46,10 @@ export class AccountPage implements OnInit {
   }
 
   ngOnInit() {
+    this.service.getQr().subscribe( Response =>{
+      this.qr = Response;
+      console.log("data:",this.qr);
+    });
   }
 
 }
