@@ -1,0 +1,27 @@
+.avatar {
+  vertical-align: middle;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px;
+  margin-right: 35px;
+  float: left;
+}
+
+.qr{
+    vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  
+  margin: 20px;
+   margin-left: 0px;
+   margin-right: 0px;
+}
+:root {
+  --ion-color-secondary: #fcfcfc;
+  --ion-color-secondary-rgb: 0,102,0;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255,255,255;
+  --ion-color-secondary-shade: #ffffff;
+  --ion-color-secondary-tint: #ffffff;
+}

@@ -1,9 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>account</ion-title>
+    <ion-icon name="log-out-outline"(click)="logout()" style="margin: 10px; font-size: 25px; float: right;"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+
+  <img src="../assets/img_avatar.png" alt="Avatar" class="avatar">
+ 
+  <!-- <embed src="../assets/vac.pdf" width="500px" height="800px" type="pdf"> -->
+  <!-- <div class="qr">
+
+    <ion-icon slot="start" name="person"></ion-icon>
+  </div> -->
+ 
+ <ngx-qrcode 
+  [elementType]="elementType" 
+  [value]="qrData" class="qr">
+</ngx-qrcode>
+<ion-item style="margin-top: 30px;">
+   <ion-input type="text" placeholder="My QR code"[(ngModel)]="qrData" color="dark" ></ion-input>
+  <ion-button (click)="scanCode()" color="danger" >
+    submit
+  </ion-button>
+ </ion-item>
+ <ion-button (click)="scanCode()"  color="danger" expand="full" style="margin-top: 10px;">
+    <ion-icon name="qr-code-outline" style="margin-right: 5px;" ></ion-icon>
+      Scan Code
+  </ion-button>
+<ion-card *ngIf="scannedCode">
+  <ion-card-content>
+    Result from Scan: {{scannedCode}}
+  </ion-card-content>
+</ion-card>
 
 </ion-content>

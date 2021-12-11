@@ -1,9 +1,66 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>statistics</ion-title>
+    <ion-icon name="log-out-outline" (click)="logout()" style="margin: 10px; font-size: 25px; float: right;"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+    <ion-card *ngFor="let data of dataa" fill="clear">
+      <ion-card>
+         <ion-header color="danger">
+        <ion-toolbar color="danger">
+          <ion-card-title color="light" class="ion-margin">Cases</ion-card-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-card-content >
+       {{data.cases}}
+      </ion-card-content>
+      </ion-card>
+     <ion-card>
+       <ion-header color="danger">
+      <ion-toolbar color="danger">
+        <ion-card-title color="light" class="ion-margin">Deaths</ion-card-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card-content>
+      {{data.deaths}}
+    </ion-card-content>
+     </ion-card>
+    <ion-card>
+      <ion-header color="danger">
+      <ion-toolbar color="danger">
+        <ion-card-title color="light" class="ion-margin">Recovered</ion-card-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card-content>
+      {{data.recovered}}
+    </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+      <ion-header color="danger">
+      <ion-toolbar color="danger">
+        <ion-card-title color="light" class="ion-margin">Active</ion-card-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card-content>
+      {{data.active}}
+    </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+      <ion-header color="danger">
+      <ion-toolbar color="danger">
+        <ion-card-title color="light" class="ion-margin">Critical</ion-card-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card-content>
+      {{data.critical}}
+    </ion-card-content>
+    </ion-card>
+    </ion-card>
+    
 
+    
 </ion-content>

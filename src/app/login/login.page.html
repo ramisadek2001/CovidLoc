@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-<form action="action_page.php" method="post">
+
   <div class="cont">
     <div class="imgcontainer">
     <img src="./assets/hello.png" class="avatar"/>
@@ -13,7 +13,7 @@
 
   </div>
   
-
+<form action="action_page.php" method="post">
   <div class="container">
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
@@ -21,7 +21,7 @@
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="submit">Login</button>
+    <button (click)="login()">Login</button>
     <button (click)="signup()">Sign-up</button>
     
   </div>

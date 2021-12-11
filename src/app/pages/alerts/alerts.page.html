@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>alerts</ion-title>
+    <ion-icon name="log-out-outline" (click)="logout()" style="margin: 10px; font-size: 25px; float: right;"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <!-- <app-alerts1 *ngFor = "let alert of alerts"
+      [alerttitle]={{alert.alerttitle}}
+    >
+    </app-alerts1>
+     -->
+     <ion-card *ngFor = "let alert of alerts">
+      <ion-header color="danger">
+        <ion-toolbar color="danger">
+          <ion-card-title color="light" class="ion-margin"  >{{alert.headline}}</ion-card-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-img [src]="alert.image"></ion-img>
+       <ion-card-content>
+        {{alert.alerttitle}}
+       </ion-card-content> 
+       
+     </ion-card>
 </ion-content>

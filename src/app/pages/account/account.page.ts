@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer/ngx';
+import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
+import { File } from "@ionic-native/file/ngx";
+import { FileTransfer } from "@ionic-native/file-transfer/ngx";
+import { Router } from '@angular/router';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -7,9 +14,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage implements OnInit {
 
-  constructor() { }
+  qrData = "https://covax.moph.gov.lb/impactmobile/vaccine/certificate?code=7NGGPMU4NY";
+  scannedCode = null;
+  elementType: 'url' | 'canvas' |'img' = 'url';
+  constructor(private document: DocumentViewer,private file:File, private trasfer: FileTransfer,private router:Router,private barcodeScanner: BarcodeScanner, private base64ToGallery: Base64ToGallery, privatetoastCtrl: ToastController ) { 
+   
+  }
+
+  scanCode(){
+
+    this.barcodeScanner.scan().then(
+      barcodeData =>{
+        this.scannedCode = barcodeData;
+      }
+    );
+  }
+
+  downloadQR(){
+
+  }
+
+  logout(){
+    this.router.navigate(['login']);
+  }
+  openPDF(){
+    const options: DocumentViewerOptions ={
+      title: 'My PDF'
+    }
+    this.document.viewDocument('../../../assets/vac.pdf','application/pdf',options)
+  }
 
   ngOnInit() {
   }
 
 }
+
+   
