@@ -1,8 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,Output,EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoginService } from "../login.service";
+
+export interface nUser{
+
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -30,6 +35,7 @@ async showAlert() {
     });
     await alert.present();
   }
+
   
 onSubmit(form: NgForm){
   console.log(form.value.email);
@@ -41,6 +47,7 @@ onSubmit(form: NgForm){
   console.log(user);
   this.service.postUser(user).subscribe( Response =>{
       console.log(Response);
+    this.service.setData(Response[0].qrcode);
       if (Response[1] == "Mabrouk") {
         this.router.navigate(['home']);
       }else{

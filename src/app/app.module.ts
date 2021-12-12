@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { File } from "@ionic-native/file/ngx";
 import { FileTransfer } from "@ionic-native/file-transfer/ngx";
 import { DocumentViewer } from "@ionic-native/document-viewer/ngx";
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { DocumentViewer } from "@ionic-native/document-viewer/ngx";
     FileTransfer,
     Base64ToGallery,
     DocumentViewer,
+    LoginService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }
   ],
   bootstrap: [AppComponent],

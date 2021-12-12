@@ -6,22 +6,25 @@ import { FileTransfer } from "@ionic-native/file-transfer/ngx";
 import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
-import { ToastController } from '@ionic/angular';
+import { NavParams, ToastController } from '@ionic/angular';
 import { QrcodeService, Qr } from "../../qrcode.service";
+import {  } from "../../login/login.page";
+import { LoginService } from "../../login.service";
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-
-  qrData = "https://covax.moph.gov.lb/impactmobile/vaccine/certificate?code=7NGGPMU4NY";
-  scannedCode = null;
-  elementType: 'url' | 'canvas' |'img' = 'url';
-  constructor(private document: DocumentViewer,private file:File, private trasfer: FileTransfer,private router:Router,private barcodeScanner: BarcodeScanner, private base64ToGallery: Base64ToGallery, privatetoastCtrl: ToastController,private service: QrcodeService ) { 
+  
+ constructor(private document: DocumentViewer,private file:File, private trasfer: FileTransfer,private router:Router,private barcodeScanner: BarcodeScanner, private base64ToGallery: Base64ToGallery, privatetoastCtrl: ToastController,private service:LoginService ) { 
    
   }
-qr: Qr[];
+  qrcode = this.service.getData();
+  qrData = this.qrcode;
+  scannedCode = null;
+  elementType: 'url' | 'canvas' |'img' = 'url';
+
   scanCode(){
 
     this.barcodeScanner.scan().then(
@@ -46,10 +49,8 @@ qr: Qr[];
   }
 
   ngOnInit() {
-    this.service.getQr().subscribe( Response =>{
-      this.qr = Response;
-      console.log("data:",this.qr);
-    });
+
+    console.log();
   }
 
 }
