@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from "@angular/forms";
+import { EmailValidator, NgForm } from "@angular/forms";
 import { UserServiceService, User } from "../user-service.service";
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -9,19 +10,37 @@ import { UserServiceService, User } from "../user-service.service";
 })
 export class SignupPage implements OnInit {
 
-  constructor(private router:Router,private service: UserServiceService) { }
+  constructor(private router:Router,private service: UserServiceService,public alertCtrl: AlertController) { }
 signup(){
-  this.router.navigate(['login']);
+  
 }
 back(){
   this.router.navigate(['login']);
 }
+
+async showAlert2() {
+    const alert = await this.alertCtrl.create({
+      header:"please complete all required fields",
+     
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
 onSubmit(form: NgForm){
-  const user = form.value;
+  if (form.value.email ===""||form.value.psw==="" || form.value.qrcode==="") {
+    this.showAlert2();
+  }
+  else{
+    this.router.navigate(['login']);
+    const user = form.value;
   this.service.postUser(user).subscribe( Response =>{
       console.log(Response);
     });
+  }
+  
 }
+
   ngOnInit() {
   }
 
